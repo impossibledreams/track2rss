@@ -4,7 +4,7 @@
 
 <!--
 #
-#   track2rss v0.3
+#   track2rss v0.2
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
@@ -25,7 +25,10 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 #
-#   NOTE: YOU MUST AGREE TO FEDEX'S LICENSING AGREEMENT BEFORE USING ACCESSING
+#   NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
+#   THEIR SYSTEMS VIA THIS SOFTWARE.
+#
+#   NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
 -->
@@ -47,7 +50,10 @@
 			<xsl:otherwise>AIR</xsl:otherwise>
 			</xsl:choose> package # <xsl:value-of select="FDXTrackReply/TrackProfile/TrackingNumber"/>
 			&lt;br /&gt;Service Type: <xsl:value-of select="FDXTrackReply/TrackProfile/Service"/>
+			&lt;br /&gt;Package Type: <xsl:value-of select="FDXTrackReply/TrackProfile/PackagingDescription"/>
+			&lt;br /&gt;Weight: <xsl:value-of select="FDXTrackReply/TrackProfile/Weight"/>
 			&lt;br /&gt;Date Shipped: <xsl:value-of select="FDXTrackReply/TrackProfile/ShipDate"/>		
+			&lt;br /&gt;Estimation of Delivery: <xsl:value-of select="FDXTrackReply/TrackProfile/EstimatedDeliveryDate"/> <xsl:value-of select="FDXTrackReply/TrackProfile/EstimatedDeliveryTime"/>	
 			&lt;br /&gt;Destination: <xsl:value-of select="FDXTrackReply/TrackProfile/DestinationAddress/City"/>,
 			<xsl:value-of select="FDXTrackReply/TrackProfile/DestinationAddress/StateOrProvinceCode"/>,
 			<xsl:value-of select="FDXTrackReply/TrackProfile/DestinationAddress/PostalCode"/>,
