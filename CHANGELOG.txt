@@ -1,0 +1,22 @@
+-------------------------------------------------
+CHANGELOG FOR track2rss v0.2
+Written by Yakov Shafranovich
+
+Copyright (C) 2005 SolidMatrix Technologies, Inc.
+All rights reserved, see COPYING file for more.
+
+A Project of SolidMatrix Research
+Website: http://track2rss.sourceforge.net
+Email:  research@solidmatrix.com
+-------------------------------------------------
+
+01/24/2005 v0.2
+* Fixes for Firefox problems
+* Fixes for version problems
+* Added support for USPS tracking
+
+01/19/2005 v0.1
+* Initial Release
+
+-------------------------------------------------
+END-OF-FILE
