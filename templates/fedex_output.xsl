@@ -61,6 +61,7 @@
 		</description>
       		<language>en-us</language>
 		<generator><xsl:value-of select="$version"/></generator>
+		<ttl>60</ttl>
 		
 		<!-- test if ok -->
 		<xsl:choose>

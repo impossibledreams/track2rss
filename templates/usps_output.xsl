@@ -4,7 +4,7 @@
 
 <!--
 #
-#   track2rss v0.3
+#   track2rss v0.2
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
@@ -24,6 +24,9 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
+#
+#   NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
+#   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
 #   NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
@@ -50,6 +53,7 @@
 		</description>
       		<language>en-us</language>
 		<generator><xsl:value-of select="$version"/></generator>
+		<ttl>60</ttl>
 		
 		<!-- test if ok -->
 		<xsl:choose>
