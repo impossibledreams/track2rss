@@ -40,9 +40,11 @@ my $ups_service_key = '';  	# XML Access Key from UPS
 my $ups_service_username = '';		# Username for UPS's site
 my $ups_service_password = '';		# Password for UPS's site
 
-my $usps_service_key= '';   			# USPS doesn't need a service key
 my $usps_service_username = '';	# Username for USPS
 my $usps_service_password = '';	# Password for USPS
+
+my $fedex_account_number = '';		# Fedex Account Number
+my $fedex_meter_number = '';
 
 #-- Optional Configuration ---
 # URL to stylesheet used for formatting RSS
@@ -62,6 +64,15 @@ my $usps_url_track = 'http://testing.shippingapis.com/ShippingAPITest.dll?API=Tr
 # production URL
 #my $usps_url_track = 'http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=';
 my $usps_url_type = 'GET';
+
+my $fedex_ground_input_xsl = 'templates/fedex_ground_input.xsl';
+my $fedex_air_input_xsl = 'templates/fedex_air_input.xsl';
+my $fedex_output_xsl = 'templates/fedex_output.xsl';
+# testing URL
+my $fedex_url_track = 'https://gatewaybeta.fedex.com/GatewayDC';
+# production URL
+#my $fedex_url_track = 'https://gateway.fedex.com/GatewayDC';
+my $fedex_url_type = 'POST';
 
 #--- Variables --
 my $version = 'track2rss/0.2 (http://track2rss.sourceforge.net)';
@@ -103,9 +114,25 @@ if($q->param('type') eq 'ups') {
    $output_xsl = $usps_output_xsl;
    $service_url_track = $usps_url_track;
    $service_url_type = $usps_url_type;
-   $service_key = $usps_service_key;
    $service_username = $usps_service_username;
    $service_password = $usps_service_password; 
+} elsif($q->param('type') eq 'fedex_ground') {
+   $tracking_number = $q->param('tracking_number');
+   $input_xsl = $fedex_ground_input_xsl;
+   $output_xsl = $fedex_output_xsl;
+   $service_url_track = $fedex_url_track;
+   $service_url_type = $fedex_url_type;
+   $service_username = $fedex_account_number;
+   $service_key = $fedex_meter_number;
+} elsif($q->param('type') eq 'fedex_air') {
+   $tracking_number = $q->param('tracking_number');
+   $input_xsl = $fedex_air_input_xsl;
+   $output_xsl = $fedex_output_xsl;
+   $service_url_track = $fedex_url_track;
+   $service_url_type = $fedex_url_type;
+   $service_key = $fedex_service_key;
+   $service_username = $fedex_service_username;
+   $service_password = $fedex_service_password; 
 } else {
    print "Content-Type: text/plain\n\n";
    print "500 ERROR: This type is not supported.\n";
