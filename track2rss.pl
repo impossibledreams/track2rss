@@ -120,6 +120,7 @@ my $source = $parser->parse_string($res->content);
 my $style_doc = $parser->parse_file($output_xsl);
 my $stylesheet = $xslt->parse_stylesheet($style_doc);
 my $results = $stylesheet->transform($source,
+	XML::LibXSLT::xpath_to_string(version => version),
 	XML::LibXSLT::xpath_to_string(url_stylesheet => $url_stylesheet)
 );
 
