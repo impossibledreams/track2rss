@@ -1,5 +1,5 @@
 -------------------------------------------------
-LICENSING INFORMATION FOR track2rss v0.2
+LICENSING INFORMATION FOR track2rss v0.3
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -63,6 +63,12 @@ WHERE THIS SOFTWARE IS USED (THIS NOTICE ALREADY APPEARS WITHIN THE RSS
 FEED ITSELF):
 
 "Information provided by http://www.usps.com/"
+
+NOTE: YOU MUST AGREE TO FEDEX'S LICENSING AGREEMENT BEFORE USING ACCESSING
+THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE THE FEDEX WEBSITE FOR MORE
+INFORMATION: 
+
+http://www.fedex.com/globaldeveloper/shipapi/
 
 -------------------------------------------------
 END-OF-FILE

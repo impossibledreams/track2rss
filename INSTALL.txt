@@ -1,5 +1,5 @@
 -------------------------------------------------
-INSTALLATION INSTRUCTIONS FOR track2rss v0.2
+INSTALLATION INSTRUCTIONS FOR track2rss v0.3
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -13,9 +13,15 @@ Email:  research@solidmatrix.com
 track2rss is designed to run within a webserver. The package
 contains the following files:
 
-track2rss.pl - Perl wrapper script
+fedex.html - an HTML form to obtain a meter number from Fedex
+testfedex_air.txt - testing data for Fedex Air
+testfedex_ground.txt - testing data for Fedex Ground
 testups.txt - testing data for UPS
 testusps.txt - testing data for USPS
+track2rss.pl - Perl wrapper script
+templates/fedex_air_input.xsl - XSLT template for producing XML requests for Fedex Air systems
+templates/fedex_ground_input.xsl - XSLT template for producing XML requests for Fedex Ground systems
+templates/fedex_output.xsl - XSLT template for converting Fedex's XML format to RSS v2.0
 templates/ups_input.xsl - XSLT template for producing XML requests for UPS's tracking systems
 templates/ups_output.xsl - XSLT template for converting UPS's XML format to RSS v2.0
 templates/usps_input.xsl - XSLT template for producing XML requests for USPS's tracking systems
@@ -25,6 +31,9 @@ NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE COPYING FILE FOR MORE INFORMATION.
 
 NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
+THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE COPYING FILE FOR MORE INFORMATION.
+
+NOTE: YOU MUST AGREE TO FEDEX'S LICENSING AGREEMENT BEFORE USING ACCESSING
 THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE COPYING FILE FOR MORE INFORMATION.
 
 -------------------------------------------------
@@ -64,7 +73,22 @@ script. You can register by going to the following website:
 
 http://www.uspswebtools.com/registration/
 
-6. OPTIONAL - A CSS Stylesheet to Format RSS Feeds.
+PLEASE NOTE: USPS provides two separate URLs, production and testing. You
+must contact USPS to obtain access to both systems.
+
+6. Login Information for Fedex ShipManager Direct XML.
+You MUST have a valid Fedex account number and meter number
+from Fedex before using this script. You can obtain
+a meter number by using the enclosed "fedex.html" file
+or by contacting Fedex. Please see the following for more
+information:
+
+http://www.fedex.com/globaldeveloper/shipapi/
+
+PLEASE NOTE: Fedex provides two separate systems, production and testing.
+You must contact Fedex to obtain access to both systems.
+
+7. OPTIONAL - A CSS Stylesheet to Format RSS Feeds.
 You can optionally provide an CSS stylesheet for formatting the output
 RSS feed. This is not REQUIRED.
 
@@ -92,8 +116,9 @@ fill a URL pointing to a CSS stylesheet used to format the RSS feed.
 5. Execute the following commands in command shell to verify installation:
 
 perl track2rss.pl <testups.txt
-perl track2rss.pl <testusps1.txt
-perl track2rss.pl <testusps2.txt
+perl track2rss.pl <testusps.txt
+perl track2rss.pl <testfedex_air.txt
+perl track2rss.pl <testfedex_ground.txt
 
 You should get XML output in your shell.
 
@@ -102,15 +127,24 @@ to be switched to production servers. Call the USPS Internet Customer Care Cente
 at 1-800-210-9512. Once you are switched to the production servers, comment out
 the testing URL from the script and substitute the production URL.
 
-6. Try to execute the script from your webserver by running the following command
+7. In order to use Fedex's systems, you must contact them and ask for your account
+to be switched to production servers. Call the Fedex Customer Care Center
+at 1-800-810-9073. Once you are switched to the production servers, use the eclosed
+"fedex.html" file to obtain a meter number, comment out the testing URL from the
+script and substitute the production URL.
+
+8. Try to execute the script from your webserver by running the following command
 (substitute the code in brackets for your server and directory):
 
 [http://www.example.com/dir/]track2data.pl?type=ups&tracking_number=1Z12345E1512345676
 [http://www.example.com/dir/]track2data.pl?type=usps&tracking_number=01038555749406853207
+[http://www.example.com/dir/]track2data.pl?type=fedex_air&tracking_number=844613667324
+[http://www.example.com/dir/]track2data.pl?type=fedex_ground&tracking_number=123456789123
 
 You should see XML output in your web browser. This tracking number is provided
 by UPS for testing purpose: 1Z12345E1512345676. Tracking number provided for USPS
-is 01038555749406853207.
+is 01038555749406853207. Tracking numbers for Fedex are 123456789123 for Ground and
+844613667324 for Air.
 
 -------------------------------------------------
 III. ADDITIONAL INFORMATION.

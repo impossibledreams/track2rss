@@ -1,5 +1,5 @@
 -------------------------------------------------
-CHANGELOG FOR track2rss v0.2
+CHANGELOG FOR track2rss v0.3
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -9,6 +9,9 @@ A Project of SolidMatrix Research
 Website: http://track2rss.sourceforge.net
 Email:  research@solidmatrix.com
 -------------------------------------------------
+
+01/26/2005 v0.3
+* Added support for Fedex tracking
 
 01/24/2005 v0.2
 * Fixes for Firefox problems

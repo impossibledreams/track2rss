@@ -4,7 +4,7 @@
 
 <!--
 #
-#   track2rss v0.2
+#   track2rss v0.3
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
@@ -26,9 +26,6 @@
 #   limitations under the License.
 #
 #   NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
-#   THEIR SYSTEMS VIA THIS SOFTWARE.
-#
-#   NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
 -->

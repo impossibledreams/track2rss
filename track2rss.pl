@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#   track2rss v0.2
+#   track2rss v0.3
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
@@ -27,6 +27,9 @@
 #   NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
+#   NOTE: YOU MUST AGREE TO FEDEX'S LICENSING AGREEMENT BEFORE USING ACCESSING
+#   THEIR SYSTEMS VIA THIS SOFTWARE.
+#
 
 use CGI;
 use CGI::Carp qw(fatalsToBrowser);
@@ -44,7 +47,7 @@ my $usps_service_username = '';	# Username for USPS
 my $usps_service_password = '';	# Password for USPS
 
 my $fedex_account_number = '';		# Fedex Account Number
-my $fedex_meter_number = '';
+my $fedex_meter_number = '';           # Fedex Meter Number (see fedex.html)
 
 #-- Optional Configuration ---
 # URL to stylesheet used for formatting RSS
