@@ -1,5 +1,5 @@
 -------------------------------------------------
-INSTALLATION INSTRUCTIONS FOR track2rss v0.1
+INSTALLATION INSTRUCTIONS FOR track2rss v0.2
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -14,12 +14,18 @@ track2rss is designed to run within a webserver. The package
 contains the following files:
 
 track2rss.pl - Perl wrapper script
-testdata.txt - testing data
+testups.txt - testing data for UPS
+testusps.txt - testing data for USPS
 templates/ups_input.xsl - XSLT template for producing XML requests for UPS's tracking systems
 templates/ups_output.xsl - XSLT template for converting UPS's XML format to RSS v2.0
+templates/usps_input.xsl - XSLT template for producing XML requests for USPS's tracking systems
+templates/usps_output.xsl - XSLT template for converting USPS's XML format to RSS v2.0
 
 NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
-THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE LICENSING FILE FOR MORE INFORMATION.
+THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE COPYING FILE FOR MORE INFORMATION.
+
+NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
+THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE COPYING FILE FOR MORE INFORMATION.
 
 -------------------------------------------------
 I. REQUIRED PREREQUISITES.
@@ -52,7 +58,13 @@ website and choosing option "Get Access Key" from the left side menu:
 
 http://www.ec.ups.com/ecommerce/gettools/gtools_intro.html
 
-5. OPTIONAL - A CSS Stylesheet to Format RSS Feeds.
+5. Login Information for USPS Webtools.
+You MUST obtain a username and password from USPS before using this
+script. You can register by going to the following website:
+
+http://www.uspswebtools.com/registration/
+
+6. OPTIONAL - A CSS Stylesheet to Format RSS Feeds.
 You can optionally provide an CSS stylesheet for formatting the output
 RSS feed. This is not REQUIRED.
 
@@ -74,22 +86,31 @@ chmod 755 track2rss.pl
 4. Open the "track2rss.pl" file with an editor of your choice. In the beginning
 of the file find a section titled "User Configuration Information". Fill in
 the XML access key, username and password provided to you by UPS and save the
-file. OPTIONAL - You can fill a URL pointing to a CSS stylesheet used to format
-the RSS feed.
+file. You should also fill in the data provided by USPS. OPTIONAL - You can
+fill a URL pointing to a CSS stylesheet used to format the RSS feed.
 
-5. Execute the following command in command shell to verify installation:
+5. Execute the following commands in command shell to verify installation:
 
-perl track2rss.pl <testdata.txt
+perl track2rss.pl <testups.txt
+perl track2rss.pl <testusps1.txt
+perl track2rss.pl <testusps2.txt
 
 You should get XML output in your shell.
+
+6. In order to use USPS's systems, you must contact them and ask for your username
+to be switched to production servers. Call the USPS Internet Customer Care Center
+at 1-800-210-9512. Once you are switched to the production servers, comment out
+the testing URL from the script and substitute the production URL.
 
 6. Try to execute the script from your webserver by running the following command
 (substitute the code in brackets for your server and directory):
 
 [http://www.example.com/dir/]track2data.pl?type=ups&tracking_number=1Z12345E1512345676
+[http://www.example.com/dir/]track2data.pl?type=usps&tracking_number=01038555749406853207
 
 You should see XML output in your web browser. This tracking number is provided
-by UPS for testing purpose: 1Z12345E1512345676.
+by UPS for testing purpose: 1Z12345E1512345676. Tracking number provided for USPS
+is 01038555749406853207.
 
 -------------------------------------------------
 III. ADDITIONAL INFORMATION.
