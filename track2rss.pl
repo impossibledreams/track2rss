@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#   track2rss v0.1
+#   track2rss v0.2
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
@@ -22,6 +22,9 @@
 #   limitations under the License.
 #
 #   NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
+#   THEIR SYSTEMS VIA THIS SOFTWARE.
+#
+#   NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
 
@@ -61,7 +64,7 @@ my $usps_url_track = 'http://testing.shippingapis.com/ShippingAPITest.dll?API=Tr
 my $usps_url_type = 'GET';
 
 #--- Variables --
-my $version = 'track2rss/0.1 (http://track2rss.sourceforge.net)';
+my $version = 'track2rss/0.2 (http://track2rss.sourceforge.net)';
 my $from = 'research@solidmatrix.com';
 my $tracking_number = '';
 my $input_xsl = '';
