@@ -1,0 +1,55 @@
+-------------------------------------------------
+LICENSING INFORMATION FOR track2rss v0.1
+Written by Yakov Shafranovich
+
+Copyright (C) 2005 SolidMatrix Technologies, Inc.
+All rights reserved.
+
+A Project of SolidMatrix Research
+Website: http://track2rss.sourceforge.net
+Email:  research@solidmatrix.com
+-------------------------------------------------
+
+Copyright (C) 2005 SolidMatrix Technologies, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not copy or use this software except
+in compliance with the License. You may obtain a copy
+of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+
+-------------------------------------------------
+
+NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
+THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE THE UPS WEBSITE FOR MORE
+INFORMATION: 
+
+http://ec.ups.com/
+
+IN COMPLIANCE WITH THE UPS LICENSING AGREEMENT FOR THEIR
+SERVICES, YOU MAY BE REQUIRED TO PLACE THE FOLLOWING NOTICE THE WEBSITE
+WHERE THIS SOFTWARE IS USED (THIS NOTICE ALREADY APPEARS WITHIN THE RSS
+FEED ITSELF):
+
+NOTICE: The UPS package tracking systems accessed via this service
+(the "Tracking Systems") and tracking information obtained through
+this service (the "Information") are the private property of UPS.
+UPS authorizes you to use the Tracking Systems solely to track shipments
+tendered by or for you to UPS for delivery and for no other purpose.
+Without limitation, you are not authorized to make the Information
+available on any web site or otherwise reproduce, distribute, copy,
+store, use or sell the Information for commercial gain without
+the express written consent of UPS. This is a personal service,
+thus you right to use the Tracking System or Information is non-assignable.
+Any access or use that is inconsistent with these terms is unauthorized
+and strictly prohibited.
+
+-------------------------------------------------
+END-OF-FILE

@@ -1,0 +1,102 @@
+-------------------------------------------------
+INSTALLATION INSTRUCTIONS FOR track2rss v0.1
+Written by Yakov Shafranovich
+
+Copyright (C) 2005 SolidMatrix Technologies, Inc.
+All rights reserved, see COPYING file for more.
+
+A Project of SolidMatrix Research
+Website: http://track2rss.sourceforge.net
+Email:  research@solidmatrix.com
+-------------------------------------------------
+
+track2rss is designed to run within a webserver. The package
+contains the following files:
+
+track2rss.pl - Perl wrapper script
+testdata.txt - testing data
+templates/ups_input.xsl - XSLT template for producing XML requests for UPS's tracking systems
+templates/ups_output.xsl - XSLT template for converting UPS's XML format to RSS v2.0
+
+NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
+THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE LICENSING FILE FOR MORE INFORMATION.
+
+-------------------------------------------------
+I. REQUIRED PREREQUISITES.
+-------------------------------------------------
+
+In order to install track2rss on your server, you must have
+the following:
+
+1. Perl v5 or later (http://www.perl.org).
+You can check if you have perl installed by typing "perl -v" into
+the command line.
+
+2. A webserver that supports Perl scripts.
+
+3. The following Perl modules (you can check if you have them by running
+perl -mMODULE_NAME):
+a. CGI and CGI::Carp - needed for processing input parameters, standard
+with most installations.
+b. Crypt::SSLeay OR  IO::Socket::SSL - this is needed by LWP to process
+HTTPS requests, see README.SSL in the LWP distribution.
+c. LWP - needed for sending requests to UPS, standard with most
+installations.
+d. XML::LibXML and XML::LibXSLT - interface to GNOME's libXML/libXSLT
+libraries.
+
+4. Login Information for UPS Online Tools.
+You MUST obtain an XML access key, username and password from UPS
+before using this script. You can register by going to the following
+website and choosing option "Get Access Key" from the left side menu:
+
+http://www.ec.ups.com/ecommerce/gettools/gtools_intro.html
+
+5. OPTIONAL - A CSS Stylesheet to Format RSS Feeds.
+You can optionally provide an CSS stylesheet for formatting the output
+RSS feed. This is not REQUIRED.
+
+-------------------------------------------------
+II. INSTALLATION INSTRUCTION.
+-------------------------------------------------
+
+1. Create a directory on your webserver where you are going to install
+this program. For some systems, this must be within the CGI-BIN directory
+in order for the script to execute.
+
+2. Extract all of the files provided into that directory.
+
+3. If you are running on a UNIX or Linux system, execute the following command
+to set proper permissions:
+
+chmod 755 track2rss.pl
+
+4. Open the "track2rss.pl" file with an editor of your choice. In the beginning
+of the file find a section titled "User Configuration Information". Fill in
+the XML access key, username and password provided to you by UPS and save the
+file. OPTIONAL - You can fill a URL pointing to a CSS stylesheet used to format
+the RSS feed.
+
+5. Execute the following command in command shell to verify installation:
+
+perl track2rss.pl <testdata.txt
+
+You should get XML output in your shell.
+
+6. Try to execute the script from your webserver by running the following command
+(substitute the code in brackets for your server and directory):
+
+[http://www.example.com/dir/]track2data.pl?type=ups&tracking_number=1Z12345E1512345676
+
+You should see XML output in your web browser. This tracking number is provided
+by UPS for testing purpose: 1Z12345E1512345676.
+
+-------------------------------------------------
+III. ADDITIONAL INFORMATION.
+-------------------------------------------------
+
+For troubleshooting and more information about this project, please see 
+the project website at http://track2rss.sourceforge.net.
+
+-------------------------------------------------
+END-OF-FILE
