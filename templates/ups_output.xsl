@@ -97,6 +97,7 @@
 			<xsl:value-of select="ActivityLocation/Address/CountryCode"/>
 		&lt;br /&gt;Status: <xsl:value-of select="Status/StatusType/Description"/>
 		</description>
+		<link>http://wwwapps.ups.com/WebTracking/processInputRequest?sort_by=status&amp;tracknums_displayed=1&amp;TypeOfInquiryNumber=T&amp;loc=en_US&amp;InquiryNumber1=<xsl:value-of select="../../../../TrackResponse/Shipment/Package/TrackingNumber"/>&amp;track.x=0&amp;track.y=0</link>
 	</item>
 </xsl:template>
 
