@@ -37,6 +37,10 @@ my $ups_service_key = '';  	# XML Access Key from UPS
 my $ups_service_username = '';		# Username for UPS's site
 my $ups_service_password = '';		# Password for UPS's site
 
+my $usps_service_key= '';   			# USPS doesn't need a service key
+my $usps_service_username = '';	# Username for USPS
+my $usps_service_password = '';	# Password for USPS
+
 #-- Optional Configuration ---
 # URL to stylesheet used for formatting RSS
 my $url_stylesheet = '';			
@@ -46,6 +50,15 @@ my $url_stylesheet = '';
 my $ups_input_xsl = 'templates/ups_input.xsl';
 my $ups_output_xsl = 'templates/ups_output.xsl';
 my $ups_url_track = 'https://www.ups.com/ups.app/xml/Track';
+my $ups_url_type = 'POST';
+
+my $usps_input_xsl = 'templates/usps_input.xsl';
+my $usps_output_xsl = 'templates/usps_output.xsl';
+# testing URL
+my $usps_url_track = 'http://testing.shippingapis.com/ShippingAPITest.dll?API=TrackV2&XML=';
+# production URL
+#my $usps_url_track = 'http://production.shippingapis.com/ShippingAPI.dll?API=TrackV2&XML=';
+my $usps_url_type = 'GET';
 
 #--- Variables --
 my $version = 'track2rss/0.1 (http://track2rss.sourceforge.net)';
@@ -53,7 +66,8 @@ my $from = 'research@solidmatrix.com';
 my $tracking_number = '';
 my $input_xsl = '';
 my $output_xsl = '';
-my $url_track = '';
+my $service_url_track = '';
+my $service_url_type = '';
 my $service_key = '';
 my $service_username = '';
 my $service_password = '';
@@ -76,9 +90,19 @@ if($q->param('type') eq 'ups') {
    $input_xsl = $ups_input_xsl;
    $output_xsl = $ups_output_xsl;
    $service_url_track = $ups_url_track;
+   $service_url_type = $ups_url_type;
    $service_key = $ups_service_key;
    $service_username = $ups_service_username;
-   $service_password = $ups_service_password; 
+   $service_password = $ups_service_password;
+} elsif($q->param('type') eq 'usps') {
+   $tracking_number = $q->param('tracking_number');
+   $input_xsl = $usps_input_xsl;
+   $output_xsl = $usps_output_xsl;
+   $service_url_track = $usps_url_track;
+   $service_url_type = $usps_url_type;
+   $service_key = $usps_service_key;
+   $service_username = $usps_service_username;
+   $service_password = $usps_service_password; 
 } else {
    print "Content-Type: text/plain\n\n";
    print "500 ERROR: This type is not supported.\n";
@@ -100,19 +124,25 @@ my $results = $stylesheet->transform($source,
 	);
 
 #--- Make request ---
+my $req;
 $ua = LWP::UserAgent->new;
 $ua->agent($version);
 $ua->from('comments@shaftek.org');
 
-my $req = HTTP::Request->new(POST => $service_url_track);
-$req->content_type('application/x-www-form-urlencoded');
-$req->add_content($stylesheet->output_string($results));
+if($service_url_type eq 'GET')
+{ 
+	$req = HTTP::Request->new(GET => join("", $service_url_track, $stylesheet->output_string($results)));
+} else { 
+	$req = HTTP::Request->new(POST => $service_url_track);
+	$req->content_type('application/x-www-form-urlencoded');
+	$req->add_content($stylesheet->output_string($results));
+}
 
 #-- Send Request --
 my $res = $ua->request($req);
 if ($res->is_error) {
     print "Content-Type: text/plain\n\n";
-    print "500 UPS Request Failed: ", $res->status_line, "\n";
+    print "500 Request Failed: ", $res->status_line, "\n";
     exit;
 }
 
