@@ -92,6 +92,7 @@ my $source = $parser->parse_string('<?xml version="1.0"?><xml/>');
 my $style_doc = $parser->parse_file($input_xsl);
 my $stylesheet = $xslt->parse_stylesheet($style_doc);
 my $results = $stylesheet->transform($source,
+	XML::LibXSLT::xpath_to_string(version => $version),
 	XML::LibXSLT::xpath_to_string(service_key => $service_key),
 	XML::LibXSLT::xpath_to_string(service_username => $service_username),
 	XML::LibXSLT::xpath_to_string(service_password => $service_password),
@@ -120,7 +121,7 @@ my $source = $parser->parse_string($res->content);
 my $style_doc = $parser->parse_file($output_xsl);
 my $stylesheet = $xslt->parse_stylesheet($style_doc);
 my $results = $stylesheet->transform($source,
-	XML::LibXSLT::xpath_to_string(version => version),
+	XML::LibXSLT::xpath_to_string(version => $version),
 	XML::LibXSLT::xpath_to_string(url_stylesheet => $url_stylesheet)
 );
 
