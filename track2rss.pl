@@ -90,7 +90,7 @@ my $fedex_url_track = 'https://gatewaybeta.fedex.com/GatewayDC';
 my $fedex_url_type = 'POST';
 
 #--- Variables --
-my $version = 'track2rss/0.2 (http://track2rss.sourceforge.net)';
+my $version = 'track2rss/0.4 (http://track2rss.sourceforge.net)';
 my $from = 'research@solidmatrix.com';
 my $tracking_number = '';
 my $input_xsl = '';
