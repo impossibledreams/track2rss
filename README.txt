@@ -1,5 +1,5 @@
 -------------------------------------------------
-README FOR track2rss v0.4
+README FOR track2rss v0.4.1
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -25,6 +25,9 @@ ups - United Parcel Service (UPS)
 usps - United States Postal Service (USPS)
 fedex_air - Fedex Air
 fedex_ground - Fedex Ground
+
+NOTE: Starting with version 0.4.1, the type parameter may be omitted and the script
+will try to auto-guess the carrier. However, this will not work with Fedex Ground.
 
 -------------------------------------------------
 

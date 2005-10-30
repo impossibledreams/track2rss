@@ -1,5 +1,5 @@
 -------------------------------------------------
-INSTALLATION INSTRUCTIONS FOR track2rss v0.4
+INSTALLATION INSTRUCTIONS FOR track2rss v0.4.1
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -148,6 +148,9 @@ You should see XML output in your web browser. This tracking number is provided
 by UPS for testing purpose: 1Z12345E1512345676. Tracking number provided for USPS
 is 01038555749406853207. Tracking numbers for Fedex are 123456789123 for Ground and
 844613667324 for Air.
+
+NOTE: Starting with version 0.4.1, the type parameter may be omitted and the script
+will try to auto-guess the carrier. However, this will not work with Fedex Ground.
 
 -------------------------------------------------
 III. OPENSEARCH SUPPORT.

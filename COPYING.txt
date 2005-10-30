@@ -1,5 +1,5 @@
 -------------------------------------------------
-LICENSING INFORMATION FOR track2rss v0.4
+LICENSING INFORMATION FOR track2rss v0.4.1
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.

@@ -1,6 +1,6 @@
 #!/usr/bin/perl
 #
-#   track2rss v0.4
+#   track2rss v0.4.1
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
@@ -90,7 +90,7 @@ my $fedex_url_track = 'https://gatewaybeta.fedex.com/GatewayDC';
 my $fedex_url_type = 'POST';
 
 #--- Variables --
-my $version = 'track2rss/0.4 (http://track2rss.sourceforge.net)';
+my $version = 'track2rss/0.4.1 (http://track2rss.sourceforge.net)';
 my $from = 'research@solidmatrix.com';
 my $tracking_number = '';
 my $input_xsl = '';
