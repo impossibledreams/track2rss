@@ -1,5 +1,5 @@
 -------------------------------------------------
-CHANGELOG FOR track2rss v0.3
+CHANGELOG FOR track2rss v0.4
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -9,6 +9,11 @@ A Project of SolidMatrix Research
 Website: http://track2rss.sourceforge.net
 Email:  research@solidmatrix.com
 -------------------------------------------------
+
+10/30/2005 v0.4
+* Added gzip support to reduce bandwidth
+* Change the output MIME type to 'text/xml'
+* Added OpenSearch v1.0 support
 
 01/26/2005 v0.3
 * Added support for Fedex tracking
