@@ -14,6 +14,7 @@ Email:  research@solidmatrix.com
 * Added gzip support to reduce bandwidth
 * Change the output MIME type to 'text/xml'
 * Added OpenSearch v1.0 support
+* Added auto-guessing for carrier type when type not provided
 
 01/26/2005 v0.3
 * Added support for Fedex tracking

@@ -100,6 +100,7 @@ my $service_url_type = '';
 my $service_key = '';
 my $service_username = '';
 my $service_password = '';
+my $type = '';
 
 #--- Check parameters --
 if ($ENV{'REQUEST_METHOD'} eq "GET")
@@ -108,13 +109,31 @@ else
    { $in = <STDIN>; }
 $q=new CGI($in);
 
-if($q->param('type') eq '' or $q->param('tracking_number') eq '')
+if($q->param('tracking_number') eq '')
 {  print "Content-Type: text/plain\n\n";
-   print "500 ERROR: Missing either parameter 'type' or 'tracking_number'.\n";
+   print "500 ERROR: Missing parameter 'tracking_number'.\n";
    exit;
 }
+
+#--- try to match via regex if type not provided ---
+if($q->param('type') eq '')
+{ my $data = $q->param('tracking_number');
+  if($data =~ /\b(1Z ?[0-9A-Z]{3} ?[0-9A-Z]{3} ?[0-9A-Z]{2} ?[0-9A-Z]{4} ?[0-9A-Z]{3} ?[0-9A-Z]|[\dT]\d\d\d ?\d\d\d\d ?\d\d\d)\b/ig) {
+	$type = 'ups';
+  } elsif($data =~ /\b(\d\d\d\d ?\d\d\d\d ?\d\d\d\d)\b/ig) {
+	$type = 'fedex_air';
+  } elsif($data =~ /\b(\d\d\d\d ?\d\d\d\d ?\d\d\d\d ?\d\d\d\d ?\d\d\d\d ?\d\d|\d\d\d\d ?\d\d\d\d ?\d\d\d\d ?\d\d\d\d ?\d\d\d\d)\b/ig) {
+	$type = 'usps';
+  } else {
+    print "Content-Type: text/plain\n\n";
+    print "500 ERROR: Missing parameter 'type'.\n";
+    exit;  
+  }
+} else {
+	$type = $q->param('type')
+}
  
-if($q->param('type') eq 'ups') {
+if($type eq 'ups') {
    $tracking_number = $q->param('tracking_number');
    $input_xsl = $ups_input_xsl;
    $output_xsl = $ups_output_xsl;
@@ -123,7 +142,7 @@ if($q->param('type') eq 'ups') {
    $service_key = $ups_service_key;
    $service_username = $ups_service_username;
    $service_password = $ups_service_password;
-} elsif($q->param('type') eq 'usps') {
+} elsif($type eq 'usps') {
    $tracking_number = $q->param('tracking_number');
    $input_xsl = $usps_input_xsl;
    $output_xsl = $usps_output_xsl;
@@ -131,7 +150,7 @@ if($q->param('type') eq 'ups') {
    $service_url_type = $usps_url_type;
    $service_username = $usps_service_username;
    $service_password = $usps_service_password; 
-} elsif($q->param('type') eq 'fedex_ground') {
+} elsif($type eq 'fedex_ground') {
    $tracking_number = $q->param('tracking_number');
    $input_xsl = $fedex_ground_input_xsl;
    $output_xsl = $fedex_output_xsl;
@@ -139,7 +158,7 @@ if($q->param('type') eq 'ups') {
    $service_url_type = $fedex_url_type;
    $service_username = $fedex_account_number;
    $service_key = $fedex_meter_number;
-} elsif($q->param('type') eq 'fedex_air') {
+} elsif($type eq 'fedex_air') {
    $tracking_number = $q->param('tracking_number');
    $input_xsl = $fedex_air_input_xsl;
    $output_xsl = $fedex_output_xsl;
