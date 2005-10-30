@@ -1,5 +1,5 @@
 -------------------------------------------------
-README FOR track2rss v0.3
+README FOR track2rss v0.4
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -45,6 +45,8 @@ to the XSLT templates there is a Perl wrapper that executes the XSLT
 templates in a semi-MVC fashion. Being that XSLT is platform independent,
 I envision writing wrappers in other languages as well. I plan on
 adding support for other tracking services as well.
+
+For OpenSearch support, see INSTALL.TXT, section III.
 
 For troubleshooting and more information about this project, please see 
 the project website at http://track2rss.sourceforge.net.
