@@ -4,7 +4,7 @@
 
 <!--
 #
-#   track2rss v0.2
+#   track2rss v0.4
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
@@ -28,9 +28,6 @@
 #   NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
-#   NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
-#   THEIR SYSTEMS VIA THIS SOFTWARE.
-#
 -->
 
 <xsl:param name="url_stylesheet"/>
@@ -41,7 +38,7 @@
 	<xsl:if test="$url_stylesheet">
 		<xsl:text disable-output-escaping="yes">&lt;?xml-stylesheet href="</xsl:text><xsl:value-of select="$url_stylesheet"/><xsl:text disable-output-escaping="yes">" type="text/css"?&gt;</xsl:text>
 	</xsl:if>
-	<rss version="2.0">
+	<rss version="2.0" xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/">
 	<channel>
 		<title>UPS Tracking Information for <xsl:value-of select="TrackResponse/Shipment/Package/TrackingNumber"/></title>
 		<link>http://wwwapps.ups.com/WebTracking/processInputRequest?sort_by=status&amp;tracknums_displayed=1&amp;TypeOfInquiryNumber=T&amp;loc=en_US&amp;InquiryNumber1=<xsl:value-of select="TrackResponse/Shipment/Package/TrackingNumber"/>&amp;track.x=0&amp;track.y=0</link>
@@ -55,21 +52,28 @@
 		This is a personal service, thus you right to use the Tracking System or Information is non-assignable. Any access
 		or use that is inconsistent with these terms is unauthorized and strictly prohibited.
 		</description>
-      		<language>en-us</language>
+      	<language>en-us</language>
 		<generator><xsl:value-of select="$version"/></generator>
 		<ttl>60</ttl>
 		
 		<!-- test if ok -->
 		<xsl:choose>
 		<xsl:when test="/TrackResponse/Response/ResponseStatusCode = '1'">
+			<openSearch:totalResults><xsl:value-of select="count(TrackResponse/Shipment/Package/Activity)"/></openSearch:totalResults>
+			<openSearch:startIndex>1</openSearch:startIndex>
+			<openSearch:itemsPerPage><xsl:value-of select="count(TrackResponse/Shipment/Package/Activity)"/></openSearch:itemsPerPage>
+
 			<!-- get the actual tracking data -->
 			<xsl:apply-templates select="TrackResponse/Shipment/Package/Activity"/>
 		</xsl:when>
 		<xsl:otherwise>
-		<item>
-			<title>TRACKING REQUEST FAILED</title>
-			<description>Failed to retrieve data from UPS, error message: <xsl:value-of select="TrackResponse/Response/Error/ErrorDescription"/></description>
-		</item>
+			<openSearch:totalResults>1</openSearch:totalResults>
+			<openSearch:startIndex>1</openSearch:startIndex>
+			<openSearch:itemsPerPage>1</openSearch:itemsPerPage>
+			<item>
+				<title>TRACKING REQUEST FAILED</title>
+				<description>Failed to retrieve data from UPS, error message: <xsl:value-of select="TrackResponse/Response/Error/ErrorDescription"/></description>
+			</item>
 		</xsl:otherwise>
 		</xsl:choose>
 	</channel>

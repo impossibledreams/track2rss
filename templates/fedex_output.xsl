@@ -4,7 +4,7 @@
 
 <!--
 #
-#   track2rss v0.2
+#   track2rss v0.4
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
@@ -25,10 +25,7 @@
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
 #
-#   NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
-#   THEIR SYSTEMS VIA THIS SOFTWARE.
-#
-#   NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
+#   NOTE: YOU MUST AGREE TO FEDEX'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
 -->
@@ -41,7 +38,7 @@
 	<xsl:if test="$url_stylesheet">
 		<xsl:text disable-output-escaping="yes">&lt;?xml-stylesheet href="</xsl:text><xsl:value-of select="$url_stylesheet"/><xsl:text disable-output-escaping="yes">" type="text/css"?&gt;</xsl:text>
 	</xsl:if>
-	<rss version="2.0">
+	<rss version="2.0" xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/">
 	<channel>
 		<title>Fedex Tracking Information for <xsl:value-of select="/FDXTrackReply/TrackProfile/TrackingNumber"/></title>
 		<link><xsl:value-of select="FDXTrackReply/TrackProfile/FedExURL"/></link>
@@ -66,12 +63,19 @@
 		<!-- test if ok -->
 		<xsl:choose>
 		<xsl:when test="/FDXTrackReply/Error">
+			<openSearch:totalResults>1</openSearch:totalResults>
+			<openSearch:startIndex>1</openSearch:startIndex>
+			<openSearch:itemsPerPage>1</openSearch:itemsPerPage>
 			<item>
 				<title>TRACKING REQUEST FAILED</title>
 				<description>Failed to retrieve data from Fedex, error message: <xsl:value-of select="FDXTrackReply/Error/Message"/></description>
 			</item>
 		</xsl:when>
 		<xsl:otherwise>
+			<openSearch:totalResults><xsl:value-of select="count(FDXTrackReply/TrackProfile/Scan)"/></openSearch:totalResults>
+			<openSearch:startIndex>1</openSearch:startIndex>
+			<openSearch:itemsPerPage><xsl:value-of select="count(FDXTrackReply/TrackProfile/Scan)"/></openSearch:itemsPerPage>
+
 			<!-- get the actual tracking data -->
 			<xsl:apply-templates select="FDXTrackReply/TrackProfile"/>
 		</xsl:otherwise>
