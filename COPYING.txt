@@ -1,5 +1,5 @@
 -------------------------------------------------
-LICENSING INFORMATION FOR track2rss v0.3
+LICENSING INFORMATION FOR track2rss v0.4
 Written by Yakov Shafranovich
 
 Copyright (C) 2005 SolidMatrix Technologies, Inc.
@@ -24,6 +24,13 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
+
+---------------------------------------------------
+The cgi_buffer module v0.3 is (c) 2000 Copyright Mark Nottingham <mnot@pobox.com>
+IO::String module v1.06 is copyright 1998-2004 Gisle Aas.
+
+Both modules are being distributed under license, for more information see the
+module files directly.
 
 -------------------------------------------------
 
@@ -51,6 +58,8 @@ thus you right to use the Tracking System or Information is non-assignable.
 Any access or use that is inconsistent with these terms is unauthorized
 and strictly prohibited.
 
+-------------------------------------------------
+
 NOTE: YOU MUST AGREE TO USPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE THE USPS WEBSITE FOR MORE
 INFORMATION: 
@@ -63,6 +72,8 @@ WHERE THIS SOFTWARE IS USED (THIS NOTICE ALREADY APPEARS WITHIN THE RSS
 FEED ITSELF):
 
 "Information provided by http://www.usps.com/"
+
+-------------------------------------------------
 
 NOTE: YOU MUST AGREE TO FEDEX'S LICENSING AGREEMENT BEFORE USING ACCESSING
 THEIR SYSTEMS VIA THIS SOFTWARE. PLEASE SEE THE FEDEX WEBSITE FOR MORE
