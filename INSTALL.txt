@@ -139,10 +139,10 @@ script and substitute the production URL.
 8. Try to execute the script from your webserver by running the following command
 (substitute the code in brackets for your server and directory):
 
-[http://www.example.com/dir/]track2data.pl?type=ups&tracking_number=1Z12345E1512345676
-[http://www.example.com/dir/]track2data.pl?type=usps&tracking_number=01038555749406853207
-[http://www.example.com/dir/]track2data.pl?type=fedex_air&tracking_number=844613667324
-[http://www.example.com/dir/]track2data.pl?type=fedex_ground&tracking_number=123456789123
+[http://www.example.com/dir/]track2rss.pl?type=ups&tracking_number=1Z12345E1512345676
+[http://www.example.com/dir/]track2rss.pl?type=usps&tracking_number=01038555749406853207
+[http://www.example.com/dir/]track2rss.pl?type=fedex_air&tracking_number=844613667324
+[http://www.example.com/dir/]track2rss.pl?type=fedex_ground&tracking_number=123456789123
 
 You should see XML output in your web browser. This tracking number is provided
 by UPS for testing purpose: 1Z12345E1512345676. Tracking number provided for USPS
