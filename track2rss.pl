@@ -1,12 +1,13 @@
 #!/usr/bin/perl
 #
-#   track2rss v0.3
+#   track2rss v0.4
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
 #   Website: http://track2rss.sourceforge.net
 #   Email:  research@solidmatrix.com
 #   
+#   ---------------------------------------------------
 #   Copyright (C) 2005 SolidMatrix Technologies, Inc.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +21,13 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
+#   ---------------------------------------------------
+#   The cgi_buffer module v0.3 is (c) 2000 Copyright Mark Nottingham <mnot@pobox.com>
+#   IO::String module v1.06 is copyright 1998-2004 Gisle Aas.
 #
+#   Both modules are being distributed under license, for more information see the
+#   module files directly.
+#   ---------------------------------------------------
 #   NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
@@ -29,6 +36,7 @@
 #
 #   NOTE: YOU MUST AGREE TO FEDEX'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
+#   ---------------------------------------------------
 #
 
 use CGI;
@@ -37,6 +45,10 @@ use Crypt::SSLeay;
 use LWP::UserAgent;
 use XML::LibXML;
 use XML::LibXSLT;
+
+require 5.004;
+use cgi_buffer;
+$cgi_buffer::generate_etag = 0;
 
 #--- User Configuration Information ---
 my $ups_service_key = '';  	# XML Access Key from UPS
@@ -188,6 +200,6 @@ my $results = $stylesheet->transform($source,
 	XML::LibXSLT::xpath_to_string(url_stylesheet => $url_stylesheet)
 );
 
-print "Content-Type: application/xml\n\n";
+print "Content-Type: text/xml\n\n";
 print $stylesheet->output_string($results);
 exit;
