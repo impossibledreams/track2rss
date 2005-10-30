@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+#
+#   track2rss v0.4
+#   Written by Yakov Shafranovich
+#
+#   A Project of SolidMatrix Research
+#   Website: http://track2rss.sourceforge.net
+#   Email:  research@solidmatrix.com
+#   
+#   Copyright (C) 2005 SolidMatrix Technologies, Inc.
+#
+#   Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+#   You may obtain a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#   Unless required by applicable law or agreed to in writing, software
+#   distributed under the License is distributed on an "AS IS" BASIS,
+#   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#   See the License for the specific language governing permissions and
+#   limitations under the License.
+#
+#   NOTE: You msut MODIFY the <Url> parameter below to reflect your own system.
+#   
+#   For more information on OpenSearch, see http://opensearch.a9.com
+#
+-->
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearchdescription/1.0/">
+  <Url>track2rss.pl?type=ups&amp;tracking_number={searchTerms}</Url>
+  <Format>http://a9.com/-/spec/opensearchrss/1.0/</Format>
+  <ShortName>UPS Tracking</ShortName>
+  <LongName>UPS package tracking</LongName>
+  <Description>UPS package tracking provided by track2rss.</Description>
+  <Tags>package tracking ups</Tags>
+  <SampleSearch>1Z12345E1512345676</SampleSearch>
+  <Developer>Yakov Shafranovich</Developer>
+  <Contact>research@solidmatrix.com</Contact>
+  <Attribution>Package results provided by United Parcel Service (UPS) under license.</Attribution>
+  <SyndicationRight>limited</SyndicationRight>
+  <AdultContent>false</AdultContent>
+</OpenSearchDescription>
