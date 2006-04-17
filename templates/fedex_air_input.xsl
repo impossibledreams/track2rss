@@ -5,7 +5,7 @@
 
 <!--
 #
-#   track2rss v0.3
+#   track2rss v0.4
 #   Written by Yakov Shafranovich
 #
 #   A Project of SolidMatrix Research
