@@ -30,14 +30,12 @@
 #
 -->
 
-<xsl:param name="service_key"/>
 <xsl:param name="service_username"/>
-<xsl:param name="service_password"/>
 <xsl:param name="tracking_number"/>
 <xsl:param name="version"/>
 
 <xsl:template match="/">
-<TrackRequest USERID="{$service_username}" PASSWORD="{$service_password}"><TrackID ID="{$tracking_number}"></TrackID></TrackRequest>
+<TrackRequest USERID="{$service_username}"><TrackID ID="{$tracking_number}"></TrackID></TrackRequest>
 </xsl:template>
 
 <xsl:template match="text()">
