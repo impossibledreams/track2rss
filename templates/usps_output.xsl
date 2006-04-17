@@ -30,6 +30,7 @@
 #
 -->
 
+<xsl:param name="date" select="20300101"/>
 <xsl:param name="url_stylesheet"/>
 <xsl:param name="version"/>
 
@@ -41,9 +42,7 @@
 	<rss version="2.0" xmlns:openSearch="http://a9.com/-/spec/opensearchrss/1.0/">
 	<channel>
 		<title>USPS Tracking Information for <xsl:value-of select="/TrackResponse/TrackInfo/@ID"/></title>
-		<link>
-		http://trkcnfrm1.smi.usps.com/netdata-cgi/db2www/cbd_243.d2w/output?CAMEFROM=OK&amp;strOrigTrackNum=<xsl:value-of select="/TrackResponse/TrackInfo/@ID"/>&amp;Go+to+Track+%26+Confirm.x=0&amp;Go+to+Track+%26+Confirm.y=0&amp;Go+to+Track+%26+Confirm=Go
-		</link>
+		<link>http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=<xsl:value-of select="/TrackResponse/TrackInfo/@ID"/></link>
 		<description>This RSS feed tracks USPS package # <xsl:value-of select="/TrackResponse/TrackInfo/@ID"/>
 		&lt;br /&gt;
 		NOTICE: Information provided by http://www.usps.com/
@@ -79,10 +78,13 @@
 <xsl:template match="TrackSummary">
 	<item>
 		<title>Summary</title>
-		<description><xsl:value-of select="."/></description>
-		<link>
-		http://trkcnfrm1.smi.usps.com/netdata-cgi/db2www/cbd_243.d2w/output?CAMEFROM=OK&amp;strOrigTrackNum=<xsl:value-of select="/TrackResponse/TrackInfo/@ID"/>&amp;Go+to+Track+%26+Confirm.x=0&amp;Go+to+Track+%26+Confirm.y=0&amp;Go+to+Track+%26+Confirm=Go
-		</link>
+		<description><xsl:value-of select="."/>
+		<xsl:if test="contains(., 'was delivered')
+					or contains(., 'No further info')
+					or contains(., 'no record of that')">&lt;br/&gt;[<xsl:value-of select="$date"/>: 
+		Please note that this feed may have expired. If so, please remove it from your reader.]</xsl:if>
+		</description>
+		<link>http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=<xsl:value-of select="/TrackResponse/TrackInfo/@ID"/></link>
 	</item>
 </xsl:template>
 
@@ -90,19 +92,15 @@
 	<item>
 		<title>Activity</title>
 		<description><xsl:value-of select="."/></description>
-		<link>
-		http://trkcnfrm1.smi.usps.com/netdata-cgi/db2www/cbd_243.d2w/output?CAMEFROM=OK&amp;strOrigTrackNum=<xsl:value-of select="/TrackResponse/TrackInfo/@ID"/>&amp;Go+to+Track+%26+Confirm.x=0&amp;Go+to+Track+%26+Confirm.y=0&amp;Go+to+Track+%26+Confirm=Go
-		</link>
+		<link>http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=<xsl:value-of select="/TrackResponse/TrackInfo/@ID"/></link>
 	</item>
 </xsl:template>
 
 <xsl:template match="Error">
 	<item>
 		<title>Error</title>
-		<description>An Error Has Occured: '<xsl:value-of select="Description"/>'</description>
-		<link>
-		http://trkcnfrm1.smi.usps.com/netdata-cgi/db2www/cbd_243.d2w/output?CAMEFROM=OK&amp;strOrigTrackNum=<xsl:value-of select="/TrackResponse/TrackInfo/@ID"/>&amp;Go+to+Track+%26+Confirm.x=0&amp;Go+to+Track+%26+Confirm.y=0&amp;Go+to+Track+%26+Confirm=Go
-		</link>
+		<description>[<xsl:value-of select="$date"/>] An Error Has Occured: '<xsl:value-of select="Description"/>'</description>
+		<link>http://trkcnfrm1.smi.usps.com/PTSInternetWeb/InterLabelInquiry.do?origTrackNum=<xsl:value-of select="/TrackResponse/TrackInfo/@ID"/></link>
 	</item>
 </xsl:template>
 

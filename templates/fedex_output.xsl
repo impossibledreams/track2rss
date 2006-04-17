@@ -30,6 +30,7 @@
 #
 -->
 
+<xsl:param name="date" select="20300101"/>
 <xsl:param name="url_stylesheet"/>
 <xsl:param name="version"/>
 
@@ -85,12 +86,18 @@
 </xsl:template>
 
 <xsl:template match="Scan">
+	<xsl:variable name="scandate"><xsl:value-of select="substring(Date, 1, 4)"/><xsl:value-of select="substring(Date, 6, 2)"/><xsl:value-of select="substring(Date, 9, 2)"/></xsl:variable>
 	<item>
 		<title><xsl:choose>
 			<xsl:when test="ScanType = '='">EXCEPTION</xsl:when>
 			<xsl:otherwise><xsl:value-of select="ScanDescription"/></xsl:otherwise>
 		</xsl:choose></title>
 		<description>
+		<xsl:if test="contains(ScanDescription, 'Delivered') and ($date - $scandate) &gt; 14">This package has been delivered <xsl:value-of
+			select="$date - $scandate"/> days ago. Please remove this RSS feed from your reader.
+		&lt;br /&gt;
+		&lt;br /&gt;
+		</xsl:if>		
 		Date/Time : <xsl:value-of select="Date"/>&#160;<xsl:value-of select="Time"/>
 		&lt;br /&gt;
 		Location :
@@ -108,7 +115,7 @@
 <xsl:template match="SoftError">
 	<item>
 		<title>Error</title>
-		<description>An Error Has Occured: '<xsl:value-of select="Message"/>'</description>
+		<description>[<xsl:value-of select="$date"/>] An Error Has Occured: '<xsl:value-of select="Message"/>'</description>
 		<link><xsl:value-of select="../FedExURL"/></link>
 	</item>
 </xsl:template>

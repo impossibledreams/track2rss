@@ -30,6 +30,7 @@
 #
 -->
 
+<xsl:param name="date" select="20300101"/>
 <xsl:param name="url_stylesheet"/>
 <xsl:param name="version"/>
 
@@ -55,7 +56,7 @@
       	<language>en-us</language>
 		<generator><xsl:value-of select="$version"/></generator>
 		<ttl>60</ttl>
-		
+			
 		<!-- test if ok -->
 		<xsl:choose>
 		<xsl:when test="/TrackResponse/Response/ResponseStatusCode = '1'">
@@ -65,6 +66,7 @@
 
 			<!-- get the actual tracking data -->
 			<xsl:apply-templates select="TrackResponse/Shipment/Package/Activity"/>
+			
 		</xsl:when>
 		<xsl:otherwise>
 			<openSearch:totalResults>1</openSearch:totalResults>
@@ -84,13 +86,18 @@
 	<item>
 		<title><xsl:choose>
 			<xsl:when test="Status/StatusType/Code = 'I'">IN TRANSIT</xsl:when>
-			<xsl:when test="Status/StatusType/Code = 'D'">DELIVERED</xsl:when>
+			<xsl:when test="Status/StatusType/Code = 'D'">DELIVERED <xsl:value-of select="$date - Date"/> days ago</xsl:when>
 			<xsl:when test="Status/StatusType/Code = 'X'">EXCEPTION</xsl:when>
 			<xsl:when test="Status/StatusType/Code = 'P'">PICKUP</xsl:when>
 			<xsl:when test="Status/StatusType/Code = 'M'">MANIFEST PICKUP</xsl:when>
 			<xsl:otherwise>UNKNOWN</xsl:otherwise>
 		</xsl:choose></title>
 		<description>
+		<xsl:if test="Status/StatusType[Code = 'D'] and ($date - Date) &gt; 14">This package has been delivered <xsl:value-of
+			select="$date - Date"/> days ago. Please remove this RSS feed from your reader.
+		&lt;br /&gt;
+		&lt;br /&gt;
+		</xsl:if>		
 		Date/Time :
 			<xsl:value-of select="substring(Date, 5, 2)"/>/
 			<xsl:value-of select="substring(Date, 7, 2)"/>/
