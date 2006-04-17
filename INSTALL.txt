@@ -71,7 +71,7 @@ website and choosing option "Get Access Key" from the left side menu:
 http://www.ec.ups.com/ecommerce/gettools/gtools_intro.html
 
 5. Login Information for USPS Webtools.
-You MUST obtain a username and password from USPS before using this
+You MUST obtain a username from USPS before using this
 script. You can register by going to the following website:
 
 http://www.uspswebtools.com/registration/
