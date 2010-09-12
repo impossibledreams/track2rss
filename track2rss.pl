@@ -1,13 +1,12 @@
 #!/usr/bin/perl
 #
-#   track2rss v0.4
+#   track2rss v1.0.0
 #   Written by Yakov Shafranovich
-#
-#   A Project of SolidMatrix Research
 #   Website: http://track2rss.sourceforge.net
-#   Email:  research@solidmatrix.com
 #   
-#   Copyright (C) 2005 SolidMatrix Technologies, Inc.
+#   Copyright (c) 2005-2008 SolidMatrix Technologies, Inc.
+#   Copyright (c) 2008-2009 Yakov Shafranovich.
+#   Copyright (c) 2009-2010 Shaftek Enterprises LLC.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.
@@ -20,6 +19,9 @@
 #   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 #   See the License for the specific language governing permissions and
 #   limitations under the License.
+#
+#   NOTE: YOU MUST AGREE TO FEDEX'S LICENSING AGREEMENT BEFORE USING ACCESSING
+#   THEIR SYSTEMS VIA THIS SOFTWARE.
 #
 #   NOTE: YOU MUST AGREE TO UPS'S LICENSING AGREEMENT BEFORE USING ACCESSING
 #   THEIR SYSTEMS VIA THIS SOFTWARE.
@@ -47,7 +49,6 @@ my $ups_service_password = '';		# Password for UPS's site
 my $usps_service_username = '';	# Username for USPS
 
 my $fedex_account_number = '';		# Fedex Account Number
-#my $fedex_meter_number = '';			# Fedex Meter Number
 my $fedex_meter_number = '';
 
 #-- Optional Configuration ---
@@ -79,8 +80,7 @@ my $fedex_url_track = 'https://gateway.fedex.com/GatewayDC';
 my $fedex_url_type = 'POST';
 
 #--- Variables --
-my $version = 'track2rss/0.4 (http://track2rss.sourceforge.net)';
-my $from = 'research@solidmatrix.com';
+my $version = 'track2rss/1.0.0 (http://track2rss.sourceforge.net)';
 my $tracking_number = '';
 my $input_xsl = '';
 my $output_xsl = '';
@@ -212,6 +212,8 @@ my $results = $stylesheet->transform($source,
 	XML::LibXSLT::xpath_to_string(date => $date)
 );
 
+#--- Check for stale requests ---
 print "Content-Type: text/xml\n\n";
 print $stylesheet->output_string($results);
+
 exit;

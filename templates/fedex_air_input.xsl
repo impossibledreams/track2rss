@@ -5,14 +5,13 @@
 
 <!--
 #
-#   track2rss v0.4
+#   track2rss v1.0.0
 #   Written by Yakov Shafranovich
-#
-#   A Project of SolidMatrix Research
 #   Website: http://track2rss.sourceforge.net
-#   Email:  research@solidmatrix.com
 #   
-#   Copyright (C) 2005 SolidMatrix Technologies, Inc.
+#   Copyright (c) 2005-2008 SolidMatrix Technologies, Inc.
+#   Copyright (c) 2008-2009 Yakov Shafranovich.
+#   Copyright (c) 2009-2010 Shaftek Enterprises LLC.
 #
 #   Licensed under the Apache License, Version 2.0 (the "License");
 #   you may not use this file except in compliance with the License.

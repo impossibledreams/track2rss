@@ -1,13 +1,13 @@
 -------------------------------------------------
-README FOR track2rss v0.4.1
+README FOR track2rss v1.0.0
 Written by Yakov Shafranovich
 
-Copyright (C) 2005 SolidMatrix Technologies, Inc.
+Copyright (c) 2005-2008 SolidMatrix Technologies, Inc.
+Copyright (c) 2008-2009 Yakov Shafranovich.
+Copyright (c) 2009-2010 Shaftek Enterprises LLC.
 All rights reserved, see COPYING file for more.
 
-A Project of SolidMatrix Research
 Website: http://track2rss.sourceforge.net
-Email:  research@solidmatrix.com
 -------------------------------------------------
 
 This project provides an ability to serve UPS, Fedex and USPS tracking information
